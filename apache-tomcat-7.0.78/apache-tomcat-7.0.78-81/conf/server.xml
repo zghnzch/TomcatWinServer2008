@@ -30,7 +30,7 @@
 		          maxThreads="5000"
 		          maxQueueSize="400"
 		          minSpareThreads="90"
-		          maxIdleTime="10000"
+		          maxIdleTime="60000"
 		/>
 		<Connector port="81"
 		           protocol="org.apache.coyote.http11.Http11NioProtocol"
@@ -43,7 +43,14 @@
 		           disableUploadTimeout="true"
 		           useBodyEncodingForURI="true"
 		           enableLookups="false"
+		           compression="on"
+		           compressionMinSize="2048"
+		           compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,image/gif,image/jpg,image/png"
 		           URIEncoding="UTF-8"/>
+		<!--<Connector port="8088" protocol="org.apache.coyote.http11.Http11NioProtocol"-->
+		<!--executor 采用上面的共享线程池-->
+		<!--connectionTimeout="5000" redirectPort="443" proxyPort="443" executor="tomcatThreadPool"-->
+		<!--URIEncoding="UTF-8"/>-->
 		<!--		<Connector port="8443"-->
 		<!--		           protocol="org.apache.coyote.http11.Http11Protocol"-->
 		<!--		           maxThreads="150"-->
@@ -58,7 +65,7 @@
 		           SSLEnabled="true"
 		           scheme="https"
 		           secure="true"
-		           keystoreFile="cert/1826944_www.zchpww.cn.pfx"
+		           keystoreFile="1826944_www.zchpww.cn_tomcat/1826944_www.zchpww.cn.pfx"
 		           keystoreType="PKCS12"
 		           keystorePass="AD5BLRhq"
 		           clientAuth="false"
@@ -83,8 +90,8 @@
 				       suffix=".txt"
 				       pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
 				<Context crossContext="true"
-				         docBase=""
-				         path="F:\jetbrainsidea\prj-aaaaxb\singbon-one-card\ic_card\target\ic_card"
+				         docBase="/ic_card"
+				         path="/"
 				         reloadable="false"/>
 			</Host>
 		</Engine>
